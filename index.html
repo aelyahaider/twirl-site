@@ -15,7 +15,8 @@
    TOKENS
    ============================================================ */
 :root{
-  --plum-deep:   #35142B;
+  --plum-deep:   #35142B;   /* dark surfaces: footer bg, modal chrome */
+  --plum-accent: #4C1D3E;   /* headings + primary CTAs (Browse the designs / Get started) */
   --plum:        #6C2C52;
   --plum-mid:    #8C4A6E;
   --plum-soft:   #C79AAE;
@@ -72,7 +73,7 @@ h1,h2,h3,p{margin:0;}
 }
 .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);display:block;}
 .heading{
-  font-family:var(--serif);font-weight:500;color:var(--plum-deep);
+  font-family:var(--serif);font-weight:500;color:var(--plum-accent);
   font-size:clamp(1.9rem,3.6vw,2.8rem);letter-spacing:-.01em;margin-top:14px;line-height:1.12;
 }
 .lede{margin-top:16px;max-width:560px;color:var(--ink-soft);font-size:1.05rem;line-height:1.7;}
@@ -86,38 +87,60 @@ h1,h2,h3,p{margin:0;}
   font-family:var(--sans);font-weight:500;font-size:.92rem;letter-spacing:.02em;
   padding:15px 30px;border-radius:999px;border:1px solid transparent;
   transition:transform .35s var(--ease), background .3s, box-shadow .3s, color .3s;
-  white-space:nowrap;
+  white-space:nowrap;text-decoration:none;
 }
 .btn:active{transform:scale(.97);}
-.btn--primary{background:var(--plum-deep);color:var(--off-white);}
-.btn--primary:hover{background:var(--plum);box-shadow:0 10px 24px -8px rgba(53,20,43,.55);}
+.btn--primary{background:var(--plum-accent);color:var(--off-white);}
+.btn--primary:hover{background:var(--plum);box-shadow:0 10px 24px -8px rgba(86,18,105,.5);}
 .btn--ghost{background:transparent;color:var(--plum-deep);border-color:var(--line);}
 .btn--ghost:hover{border-color:var(--plum-deep);background:var(--plum-wash);}
 .btn--full{width:100%;}
+.btn--sm{padding:10px 18px;font-size:.82rem;}
 .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
 
 /* thread-swirl divider — the signature motif, echoed at small scale between sections */
 .thread{display:flex;justify-content:center;padding:6px 0;}
 .thread svg{width:130px;height:20px;opacity:.55;}
 
+/* logo placeholder — swap the inner comment for <img> once a real mark exists */
+.logo-slot{
+  display:flex;align-items:center;justify-content:center;flex:none;
+  border:1.5px dashed var(--plum-soft);border-radius:10px;background:var(--plum-wash);
+  color:var(--plum-mid);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+}
+.logo-slot--nav{width:34px;height:34px;}
+.logo-slot--hero{width:76px;height:76px;margin:0 auto 6px;border-radius:16px;}
+.logo-slot--footer{width:40px;height:40px;border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);}
+
 /* ============================================================
    NAV
    ============================================================ */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:80;
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
   padding:20px var(--edge);transition:background .4s var(--ease), padding .4s var(--ease), box-shadow .4s;
 }
 .nav.is-scrolled{background:rgba(251,246,239,.92);backdrop-filter:blur(10px);padding-top:13px;padding-bottom:13px;box-shadow:0 8px 30px -18px rgba(53,20,43,.4);}
-.nav__mark{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.5rem;color:var(--plum-deep);letter-spacing:.01em;}
+.nav__brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav__mark{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.5rem;color:var(--plum-accent);letter-spacing:.01em;}
+.nav__right{display:flex;align-items:center;gap:22px;}
 .nav__links{display:flex;gap:34px;align-items:center;}
 .nav__links a{font-size:.86rem;letter-spacing:.03em;text-decoration:none;color:var(--ink);position:relative;padding:4px 0;}
 .nav__links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--gold);transition:width .35s var(--ease);}
 .nav__links a:hover::after{width:100%;}
-.nav__cta{font-size:.82rem !important;padding:10px 20px;border-radius:999px;background:var(--plum-deep);color:#fff !important;}
+.nav__cta{font-size:.82rem !important;padding:10px 20px;border-radius:999px;background:var(--plum-accent);color:#fff !important;}
 .nav__cta::after{display:none;}
+
+.nav__cart{position:relative;background:none;border:none;padding:6px;color:var(--plum-accent);display:flex;}
+.nav__cart svg{width:22px;height:22px;}
+.nav__cart-count{
+  position:absolute;top:-4px;right:-4px;background:var(--gold);color:#fff;font-size:.62rem;font-weight:700;
+  min-width:16px;height:16px;border-radius:999px;display:flex;align-items:center;justify-content:center;padding:0 3px;
+}
+.nav__cart-count.is-empty{display:none;}
+
 .nav__burger{display:none;background:none;border:none;padding:6px;}
-.nav__burger span{display:block;width:22px;height:1.5px;background:var(--plum-deep);margin:5px 0;transition:transform .3s,opacity .3s;}
+.nav__burger span{display:block;width:22px;height:1.5px;background:var(--plum-accent);margin:5px 0;transition:transform .3s,opacity .3s;}
 .nav__mobile{display:none;}
 
 @media (max-width:820px){
@@ -129,7 +152,7 @@ h1,h2,h3,p{margin:0;}
     opacity:0;pointer-events:none;transition:opacity .3s, transform .3s;z-index:70;
   }
   .nav__mobile.is-open{opacity:1;transform:translateY(0);pointer-events:auto;}
-  .nav__mobile a{padding:16px 4px;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:1.2rem;color:var(--plum-deep);text-decoration:none;}
+  .nav__mobile a{padding:16px 4px;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:1.2rem;color:var(--plum-accent);text-decoration:none;}
 }
 
 /* ============================================================
@@ -146,7 +169,7 @@ h1,h2,h3,p{margin:0;}
 .hero__eyebrow{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;}
 .hero__mark{
   font-family:var(--serif);font-style:italic;font-weight:500;
-  font-size:clamp(3.4rem,12vw,6.4rem);color:var(--plum-deep);line-height:1;margin:18px 0 6px;
+  font-size:clamp(3.4rem,12vw,6.4rem);color:var(--plum-accent);line-height:1;margin:6px 0 6px;
 }
 .hero__tag{font-size:1.08rem;color:var(--ink-soft);max-width:440px;margin:0 auto;line-height:1.65;}
 .hero__cta{margin-top:38px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
@@ -202,12 +225,12 @@ h1,h2,h3,p{margin:0;}
 }
 .card__body{padding:26px 26px 28px;}
 .card__cut{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;}
-.card__name{font-family:var(--serif);font-size:1.5rem;color:var(--plum-deep);margin-top:8px;font-weight:500;}
+.card__name{font-family:var(--serif);font-size:1.5rem;color:var(--plum-accent);margin-top:8px;font-weight:500;}
 .card__desc{font-size:.92rem;color:var(--ink-soft);margin-top:10px;line-height:1.6;}
 .card__meta{display:flex;justify-content:space-between;align-items:center;margin-top:20px;}
 .card__colours{display:flex;gap:8px;}
 .swatch-dot{width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);box-shadow:0 0 0 1px var(--line);position:relative;}
-.card__cta{font-size:.8rem;font-weight:600;color:var(--plum-deep);display:flex;align-items:center;gap:6px;}
+.card__cta{font-size:.8rem;font-weight:600;color:var(--plum-accent);display:flex;align-items:center;gap:6px;}
 .card__cta svg{width:13px;height:13px;transition:transform .3s var(--ease);}
 .card:hover .card__cta svg{transform:translateX(4px);}
 .card__hit{position:absolute;inset:0;width:100%;height:100%;background:none;border:none;z-index:1;}
@@ -241,7 +264,7 @@ h1,h2,h3,p{margin:0;}
 }
 .modal__top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
 .modal__eyebrow{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;}
-.modal__title{font-family:var(--serif);font-size:1.7rem;color:var(--plum-deep);margin-top:6px;}
+.modal__title{font-family:var(--serif);font-size:1.7rem;color:var(--plum-accent);margin-top:6px;}
 .modal__close{background:var(--plum-wash);border:none;width:38px;height:38px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:var(--plum-deep);font-size:1.1rem;transition:background .3s;}
 .modal__close:hover{background:var(--plum-soft);color:#fff;}
 
@@ -261,72 +284,109 @@ h1,h2,h3,p{margin:0;}
 }
 .opt-swatch .dot{width:26px;height:26px;border-radius:50%;box-shadow:0 0 0 1px var(--line) inset;}
 .opt-swatch span{font-size:.85rem;}
-.opt-swatch.is-active{border-color:var(--plum-deep);background:var(--plum-wash);}
+.opt-swatch.is-active{border-color:var(--plum-accent);background:var(--plum-wash);}
 
 .opt-chip{
   padding:12px 16px;border-radius:14px;border:1.5px solid var(--line);background:#fff;
-  text-align:left;transition:border-color .25s, background .25s;min-width:104px;
+  text-align:left;transition:border-color .25s, background .25s;min-width:88px;
 }
-.opt-chip .label{display:block;font-weight:600;font-size:.92rem;color:var(--plum-deep);}
+.opt-chip .label{display:block;font-weight:600;font-size:.92rem;color:var(--plum-accent);}
 .opt-chip .measure{display:block;font-size:.74rem;color:var(--ink-soft);margin-top:2px;}
-.opt-chip.is-active{border-color:var(--plum-deep);background:var(--plum-wash);}
-.opt-chip.is-fixed{background:var(--plum-wash);border-color:var(--plum-deep);cursor:default;}
+.opt-chip.is-active{border-color:var(--plum-accent);background:var(--plum-wash);}
 
 .fixed-note{font-size:.78rem;color:var(--ink-soft);margin-top:10px;font-style:italic;}
 
-/* try-on */
+/* try-on / mannequin */
 .tryon-toggle{
   margin-top:32px;width:100%;display:flex;justify-content:space-between;align-items:center;
   padding:16px 18px;background:#fff;border:1.5px solid var(--line);border-radius:16px;
 }
-.tryon-toggle strong{font-family:var(--serif);font-size:1.02rem;color:var(--plum-deep);font-weight:500;}
+.tryon-toggle strong{font-family:var(--serif);font-size:1.02rem;color:var(--plum-accent);font-weight:500;}
 .tryon-toggle small{display:block;color:var(--ink-soft);font-size:.78rem;margin-top:2px;}
 .tryon-toggle .chev{transition:transform .3s var(--ease);color:var(--gold);}
 .tryon-toggle[aria-expanded="true"] .chev{transform:rotate(180deg);}
 .tryon-panel{max-height:0;overflow:hidden;transition:max-height .45s var(--ease);}
-.tryon-panel.is-open{max-height:900px;}
+.tryon-panel.is-open{max-height:1200px;}
 .tryon-inner{padding:22px 4px 6px;}
-.tryon-row{display:flex;gap:14px;flex-wrap:wrap;}
-.tryon-upload{
-  flex:1;min-width:180px;border:1.5px dashed var(--plum-soft);border-radius:14px;padding:18px;
-  text-align:center;background:var(--plum-wash);cursor:pointer;
+
+.shirt-row{display:flex;gap:8px;flex-wrap:wrap;}
+.shirt-dot{
+  width:28px;height:28px;border-radius:50%;border:2px solid var(--line);cursor:pointer;padding:0;
+  transition:border-color .2s, transform .2s;
 }
-.tryon-upload input{display:none;}
-.tryon-upload span{display:block;font-size:.82rem;color:var(--plum-mid);margin-top:6px;}
-.height-field{flex:1;min-width:160px;}
-.height-field input, .height-field select{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);margin-top:6px;background:#fff;}
+.shirt-dot.is-active{border-color:var(--plum-accent);transform:scale(1.12);}
+
+.height-field{margin-top:22px;max-width:260px;}
+.height-field input, .height-field select{padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);margin-top:6px;background:#fff;}
 .height-row{display:flex;gap:8px;}
-.height-row input{flex:2;}
+.height-row input{flex:2;width:100%;}
 .height-row select{flex:1;}
 
-.tryon-preview{margin-top:18px;}
-.tryon-frame{
-  position:relative;width:180px;aspect-ratio:3/5;margin:0 auto;border-radius:16px;overflow:hidden;
-  background:var(--ivory);box-shadow:0 12px 30px -18px rgba(53,20,43,.4);
+.mannequin-wrap{margin-top:22px;display:flex;flex-direction:column;align-items:center;}
+.mannequin-frame{background:var(--ivory);border-radius:16px;box-shadow:0 12px 30px -18px rgba(53,20,43,.4);padding:10px;}
+.mannequin-readout{text-align:center;margin-top:14px;font-size:.86rem;color:var(--plum-mid);}
+.mannequin-readout strong{color:var(--plum-accent);}
+.mannequin-hint{font-size:.74rem;color:var(--ink-soft);text-align:center;margin-top:4px;}
+.mannequin-disclaimer{
+  font-size:.74rem;color:var(--ink-soft);text-align:center;margin-top:10px;padding-top:10px;
+  border-top:1px solid var(--line);font-style:italic;
 }
-.tryon-frame img{width:100%;height:100%;object-fit:cover;}
-.tryon-frame .placeholder-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--plum-soft);}
-.tryon-line{position:absolute;left:0;right:0;height:0;border-top:2px dashed var(--gold);}
-.tryon-line .tag{
-  position:absolute;right:6px;top:-10px;background:var(--gold);color:#fff;font-size:.62rem;
-  letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap;
-}
-.tryon-shade{position:absolute;left:0;right:0;background:rgba(108,44,82,.22);}
-.tryon-readout{text-align:center;margin-top:14px;font-size:.86rem;color:var(--plum-mid);}
-.tryon-readout strong{color:var(--plum-deep);}
-.tryon-hint{font-size:.74rem;color:var(--ink-soft);text-align:center;margin-top:6px;}
 
 .modal__submit{margin-top:36px;}
 .modal__error{color:#9C3B47;font-size:.82rem;margin-top:10px;display:none;}
 .modal__error.is-visible{display:block;}
 
+.modal__added{display:none;text-align:center;padding:10px 0 4px;}
+.modal__added.is-visible{display:block;}
+.modal__added svg{width:34px;height:34px;color:var(--gold);margin:0 auto 10px;}
+.modal__added p{font-family:var(--serif);font-size:1.15rem;color:var(--plum-accent);}
+.modal__added .row{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+
 /* ============================================================
-   ORDER FORM
+   CART DRAWER
+   ============================================================ */
+.cart-backdrop{
+  position:fixed;inset:0;background:rgba(43,27,36,.5);z-index:210;opacity:0;pointer-events:none;
+  transition:opacity .35s var(--ease);display:flex;justify-content:flex-end;
+}
+.cart-backdrop.is-open{opacity:1;pointer-events:auto;}
+.cart-drawer{
+  width:100%;max-width:420px;height:100%;background:var(--off-white);
+  padding:30px var(--edge) 30px;overflow-y:auto;transform:translateX(100%);
+  transition:transform .4s var(--ease);display:flex;flex-direction:column;
+}
+.cart-backdrop.is-open .cart-drawer{transform:translateX(0);}
+.cart-drawer__top{display:flex;justify-content:space-between;align-items:center;}
+.cart-drawer__title{font-family:var(--serif);font-size:1.5rem;color:var(--plum-accent);}
+.cart-list{margin-top:24px;flex:1;}
+.cart-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);}
+.cart-item img{width:56px;height:70px;object-fit:cover;border-radius:8px;flex:none;background:var(--ivory);}
+.cart-item__info{flex:1;}
+.cart-item__name{font-family:var(--serif);font-size:1rem;color:var(--plum-accent);}
+.cart-item__meta{font-size:.78rem;color:var(--ink-soft);margin-top:4px;line-height:1.5;}
+.cart-item__remove{background:none;border:none;color:var(--ink-soft);font-size:.78rem;text-decoration:underline;padding:0;margin-top:6px;}
+.cart-empty{text-align:center;color:var(--ink-soft);padding:50px 10px;font-size:.92rem;}
+.cart-empty a{color:var(--plum-accent);font-weight:600;}
+.cart-drawer__footer{padding-top:20px;}
+
+/* ============================================================
+   CHECKOUT
    ============================================================ */
 .order__panel{
   margin-top:44px;background:#fff;border-radius:var(--radius);padding:clamp(28px,4vw,52px);
   box-shadow:0 24px 60px -34px rgba(53,20,43,.4);position:relative;
 }
+.checkout-summary{margin-bottom:10px;}
+.checkout-summary__title{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:14px;}
+.checkout-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);}
+.checkout-item img{width:56px;height:70px;object-fit:cover;border-radius:8px;flex:none;background:var(--ivory);}
+.checkout-item__info{flex:1;}
+.checkout-item__name{font-family:var(--serif);font-size:1rem;color:var(--plum-accent);}
+.checkout-item__meta{font-size:.78rem;color:var(--ink-soft);margin-top:4px;line-height:1.5;}
+.checkout-item__remove{background:none;border:none;color:var(--ink-soft);font-size:.78rem;text-decoration:underline;padding:0;margin-top:6px;}
+.checkout-empty{text-align:center;color:var(--ink-soft);padding:30px 10px;font-size:.94rem;background:var(--plum-wash);border-radius:16px;}
+.checkout-empty a{color:var(--plum-accent);font-weight:600;}
+
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px;}
 .form-grid .full{grid-column:1 / -1;}
 .form-field label{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;}
@@ -334,7 +394,7 @@ h1,h2,h3,p{margin:0;}
   width:100%;margin-top:8px;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);
   background:var(--off-white);transition:border-color .25s;
 }
-.form-field input:focus, .form-field select:focus, .form-field textarea:focus{border-color:var(--plum-deep);outline:none;}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus{border-color:var(--plum-accent);outline:none;}
 .form-field.has-error input, .form-field.has-error select{border-color:#9C3B47;}
 .form-field .error-msg{font-size:.72rem;color:#9C3B47;margin-top:6px;display:none;}
 .form-field.has-error .error-msg{display:block;}
@@ -345,7 +405,7 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
 .confirm{display:none;text-align:center;padding:30px 10px;}
 .confirm.is-visible{display:block;}
 .confirm__mark{width:56px;height:56px;margin:0 auto 18px;color:var(--gold);}
-.confirm h3{font-family:var(--serif);font-size:1.6rem;color:var(--plum-deep);font-weight:500;}
+.confirm h3{font-family:var(--serif);font-size:1.6rem;color:var(--plum-accent);font-weight:500;}
 .confirm p{color:var(--ink-soft);margin-top:10px;max-width:400px;margin-left:auto;margin-right:auto;}
 .confirm button{margin-top:22px;}
 
@@ -367,6 +427,7 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
    ============================================================ */
 .footer{background:var(--plum-deep);color:var(--off-white);padding:64px 0 34px;margin-top:20px;}
 .footer__top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.footer__brand{display:flex;align-items:center;gap:12px;}
 .footer__mark{font-family:var(--serif);font-style:italic;font-size:1.7rem;}
 .footer__tag{color:var(--plum-soft);font-size:.88rem;margin-top:10px;max-width:260px;}
 .footer__col h4{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--plum-soft);margin-bottom:14px;}
@@ -387,22 +448,31 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
      NAV
      ============================================================ -->
 <nav class="nav" id="siteNav">
-  <a href="#top" class="nav__mark">Twirl</a>
-  <div class="nav__links">
-    <a href="#designs">Designs</a>
-    <a href="#about">About</a>
-    <a href="#order">Order</a>
-    <a href="#contact">Contact</a>
-    <a href="#designs" class="nav__cta">Get started</a>
+  <a href="#top" class="nav__brand">
+    <span class="logo-slot logo-slot--nav" aria-hidden="true"><!-- TODO: replace with <img src="images/logo.png" alt="Twirl logo"> once the logo is ready --></span>
+    <span class="nav__mark">Twirl</span>
+  </a>
+  <div class="nav__right">
+    <div class="nav__links">
+      <a href="#about">About</a>
+      <a href="#designs">Designs</a>
+      <a href="#order">Checkout</a>
+      <a href="#contact">Contact</a>
+      <a href="#designs" class="nav__cta">Get started</a>
+    </div>
+    <button class="nav__cart" id="cartOpenBtn" aria-label="Open cart">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16l-1.5 11.5a2 2 0 0 1-2 1.5H7.5a2 2 0 0 1-2-1.5L4 7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 7V6a4 4 0 0 1 8 0v1" stroke="currentColor" stroke-width="1.5"/></svg>
+      <span class="nav__cart-count is-empty" id="cartCount">0</span>
+    </button>
+    <button class="nav__burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <button class="nav__burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 <div class="nav__mobile" id="mobileMenu">
-  <a href="#designs">Designs</a>
   <a href="#about">About</a>
-  <a href="#order">Order</a>
+  <a href="#designs">Designs</a>
+  <a href="#order">Checkout</a>
   <a href="#contact">Contact</a>
 </div>
 
@@ -417,12 +487,13 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
       stroke="var(--plum)" stroke-width="2"/>
   </svg>
   <div class="hero__inner">
+    <span class="logo-slot logo-slot--hero" aria-hidden="true"><!-- TODO: replace with <img src="images/logo.png" alt="Twirl logo"> once the logo is ready --></span>
     <p class="hero__eyebrow">Made to order · Karachi</p>
     <h1 class="hero__mark">Twirl</h1>
     <p class="hero__tag">Three skirts, cut with modesty in mind and made only once you've asked for them. No rack, no rush — just your measurements and a little time.</p>
     <div class="hero__cta">
       <a href="#designs" class="btn btn--primary">Browse the designs</a>
-      <a href="#order" class="btn btn--ghost">Go straight to inquiry</a>
+      <a href="#order" class="btn btn--ghost">Go straight to checkout</a>
     </div>
   </div>
   <div class="hero__scroll"><span></span>Scroll</div>
@@ -453,7 +524,7 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
   <div class="wrap">
     <p class="eyebrow">The collection</p>
     <h2 class="heading reveal">Three skirts. Made when you ask.</h2>
-    <p class="lede reveal">Every piece below is cut to order in your size and choice of colour. Open a design to choose your fit — and, if you'd like, see roughly where the hem will sit on you before you ask us to make it.</p>
+    <p class="lede reveal">Every piece below is cut to order in your size, length and choice of colour. Open a design to configure it — and, if you'd like, see roughly how that length sits on a mannequin your height.</p>
 
     <div class="rail">
       <div class="rail__rod" aria-hidden="true">
@@ -474,15 +545,17 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
 </div>
 
 <!-- ============================================================
-     ORDER INQUIRY FORM
+     CHECKOUT
      ============================================================ -->
 <section class="section bg-wash" id="order">
   <div class="wrap">
     <p class="eyebrow">Step two</p>
-    <h2 class="heading reveal">Send us your inquiry</h2>
-    <p class="lede reveal">Tell us who you are and what you'd like made. We'll confirm measurements, fabric availability and turnaround by your preferred contact method — no payment or commitment yet.</p>
+    <h2 class="heading reveal">Checkout</h2>
+    <p class="lede reveal">Review what's in your bag, add your details, and we'll confirm measurements, fabric availability and turnaround by your preferred contact method — no payment yet.</p>
 
     <div class="order__panel reveal">
+      <div class="checkout-summary" id="checkoutSummary"><!-- rendered by JS --></div>
+
       <form id="orderForm" novalidate>
         <div class="form-grid">
           <div class="form-field full">
@@ -505,24 +578,6 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
             <p class="error-msg">Please add a way to reach you.</p>
           </div>
 
-          <div class="form-field">
-            <label for="fld-design">Design</label>
-            <select id="fld-design" name="design" required></select>
-          </div>
-          <div class="form-field">
-            <label for="fld-colour">Colour</label>
-            <select id="fld-colour" name="colour" required></select>
-          </div>
-
-          <div class="form-field">
-            <label for="fld-size">Waist size</label>
-            <select id="fld-size" name="size" required></select>
-          </div>
-          <div class="form-field">
-            <label for="fld-length">Length</label>
-            <select id="fld-length" name="length" required></select>
-          </div>
-
           <div class="form-field full">
             <label for="fld-notes">Notes &amp; custom requests <span style="text-transform:none;font-weight:400;">(optional)</span></label>
             <textarea id="fld-notes" name="notes" placeholder="Fabric preferences, occasion, timeline, anything else we should know…"></textarea>
@@ -530,16 +585,16 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
         </div>
 
         <div class="form-submit">
-          <button type="submit" class="btn btn--primary">Send inquiry</button>
-          <p class="form-note">We reply within 1–2 days. This is an inquiry, not an order confirmation.</p>
+          <button type="submit" class="btn btn--primary" id="checkoutSubmitBtn">Send checkout details</button>
+          <p class="form-note">We reply within 1–2 days. This confirms your order details, not payment.</p>
         </div>
       </form>
 
       <div class="confirm" id="orderConfirm">
         <svg class="confirm__mark" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="1.5"/><path d="M18 31l8 8 17-19" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Inquiry sent</h3>
-        <p>Thank you — we've received your details and will be in touch by your preferred method shortly.</p>
-        <button type="button" class="btn btn--ghost" id="resetFormBtn">Submit another inquiry</button>
+        <h3>Details sent</h3>
+        <p>Thank you — we've received your bag and details, and will be in touch by your preferred method shortly.</p>
+        <button type="button" class="btn btn--ghost" id="resetFormBtn">Start a new order</button>
       </div>
     </div>
   </div>
@@ -554,11 +609,11 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
     <h2 class="heading reveal">Behind the seams</h2>
     <p class="lede reveal">Fittings, fabric arrivals and finished pieces, as they happen.</p>
 
-    <a class="ig-grid" href="https://instagram.com/twirl.studio" target="_blank" rel="noopener" aria-label="Visit Twirl on Instagram" style="display:grid;margin-top:30px;">
+    <a class="ig-grid" href="https://instagram.com/twirl.studio_" target="_blank" rel="noopener" aria-label="Visit Twirl on Instagram" style="display:grid;margin-top:30px;">
       <!-- placeholder tiles injected by JS -->
     </a>
     <div class="ig-cta">
-      <a href="https://instagram.com/twirl.studio" target="_blank" rel="noopener" class="btn btn--ghost">Follow @twirl.studio</a>
+      <a href="https://instagram.com/twirl.studio_" target="_blank" rel="noopener" class="btn btn--ghost">Follow @twirl.studio_</a>
     </div>
   </div>
 </section>
@@ -572,27 +627,30 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
   <div class="wrap">
     <div class="footer__top">
       <div>
-        <div class="footer__mark">Twirl</div>
-        <p class="footer__tag">Modest skirts, made to order. Cut with care, one inquiry at a time.</p>
+        <div class="footer__brand">
+          <span class="logo-slot logo-slot--footer" aria-hidden="true"><!-- TODO: replace with <img src="images/logo.png" alt="Twirl logo"> once the logo is ready --></span>
+          <div class="footer__mark">Twirl</div>
+        </div>
+        <p class="footer__tag">Modest skirts, made to order. Cut with care, one order at a time.</p>
       </div>
       <div class="footer__cols">
         <div class="footer__col">
           <h4>Navigate</h4>
-          <a href="#designs">Designs</a>
           <a href="#about">About</a>
-          <a href="#order">Order</a>
+          <a href="#designs">Designs</a>
+          <a href="#order">Checkout</a>
         </div>
         <div class="footer__col">
           <h4>Reach us</h4>
-          <a href="mailto:hello@twirl.studio">hello@twirl.studio</a>
-          <a href="https://wa.me/923000000000" target="_blank" rel="noopener">WhatsApp: +92 300 0000000</a>
-          <a href="https://instagram.com/twirl.studio" target="_blank" rel="noopener">@twirl.studio</a>
+          <a href="mailto:haideraelya@gmail.com">haideraelya@gmail.com</a>
+          <a href="https://wa.me/923062385355" target="_blank" rel="noopener">WhatsApp: 0306 2385355</a>
+          <a href="https://instagram.com/twirl.studio_" target="_blank" rel="noopener">@twirl.studio_</a>
         </div>
       </div>
     </div>
     <div class="footer__bottom">
       <span>© 2026 Twirl. Made-to-order, with care.</span>
-      <span>Placeholder contact details — update before launch</span>
+      <span>Logo coming soon</span>
     </div>
   </div>
 </footer>
@@ -629,7 +687,7 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
 
     <!-- Length -->
     <div class="field">
-      <p class="field__label">Length</p>
+      <p class="field__label">Length, waist to hem</p>
       <div class="option-row" id="lengthRow"></div>
     </div>
 
@@ -637,50 +695,68 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
     <button type="button" class="tryon-toggle" id="tryonToggle" aria-expanded="false" aria-controls="tryonPanel">
       <span>
         <strong>Try it on</strong>
-        <small>Optional — see roughly where this hem falls on you</small>
+        <small>Optional — see roughly how this length sits on a mannequin your height</small>
       </span>
       <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
 
     <div class="tryon-panel" id="tryonPanel">
       <div class="tryon-inner">
-        <div class="tryon-row">
-          <label class="tryon-upload" id="tryonUploadLabel">
-            <input type="file" accept="image/*" id="tryonFile">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" style="margin:0 auto;color:var(--plum-mid);"><path d="M12 16V4M12 4l-4 4M12 4l4 4M4 20h16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Upload a full-length photo, standing straight</span>
-          </label>
-          <div class="height-field">
-            <label class="field__label" for="tryonHeight">Your height</label>
-            <div class="height-row">
-              <input type="number" id="tryonHeight" min="100" max="230" placeholder="e.g. 165">
-              <select id="tryonUnit">
-                <option value="cm">cm</option>
-                <option value="in">in</option>
-              </select>
-            </div>
+
+        <p class="field__label">Shirt colour on the mannequin</p>
+        <div class="shirt-row" id="shirtRow"></div>
+
+        <div class="height-field">
+          <label class="field__label" for="tryonHeight">Your height</label>
+          <div class="height-row">
+            <input type="number" id="tryonHeight" min="100" max="210" placeholder="e.g. 165">
+            <select id="tryonUnit">
+              <option value="cm">cm</option>
+              <option value="in">in</option>
+            </select>
           </div>
         </div>
 
-        <div class="tryon-preview">
-          <div class="tryon-frame" id="tryonFrame">
-            <div class="placeholder-icon" id="tryonPlaceholderIcon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="3.2" stroke="currentColor" stroke-width="1.4"/><path d="M5 21c0-4.4 3.1-7 7-7s7 2.6 7 7" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-            </div>
-            <img id="tryonImg" alt="Uploaded photo for try-on preview" style="display:none;">
-            <div class="tryon-shade" id="tryonShade" style="display:none;"></div>
-            <div class="tryon-line" id="tryonWaistLine" style="display:none;"><span class="tag">Waist</span></div>
-            <div class="tryon-line" id="tryonHemLine" style="display:none;"><span class="tag">Hem</span></div>
+        <div class="mannequin-wrap">
+          <div class="mannequin-frame">
+            <div id="mannequinSvgHolder"></div>
           </div>
-          <p class="tryon-readout" id="tryonReadout"></p>
-          <p class="tryon-hint">A proportional guide based on typical body proportions and your height — not a photorealistic preview.</p>
+          <p class="mannequin-readout" id="mannequinReadout"></p>
+          <p class="mannequin-hint" id="mannequinHint"></p>
+          <p class="mannequin-disclaimer">Body proportions vary from person to person — this is a proportional guide, not an exact fitting.</p>
         </div>
+
       </div>
     </div>
 
     <div class="modal__submit">
-      <button type="button" class="btn btn--primary btn--full" id="modalSubmitBtn">Submit inquiry with this configuration</button>
+      <button type="button" class="btn btn--primary btn--full" id="modalSubmitBtn">Add to cart</button>
       <p class="modal__error" id="modalError">Please choose a colour, size and length first.</p>
+
+      <div class="modal__added" id="modalAdded">
+        <svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="1.5"/><path d="M18 31l8 8 17-19" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Added to your cart</p>
+        <div class="row">
+          <button type="button" class="btn btn--ghost btn--sm" id="keepBrowsingBtn">Keep browsing</button>
+          <button type="button" class="btn btn--primary btn--sm" id="viewCartBtn">View cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     CART DRAWER
+     ============================================================ -->
+<div class="cart-backdrop" id="cartBackdrop" role="presentation">
+  <div class="cart-drawer" role="dialog" aria-modal="true" aria-label="Your cart" id="cartDrawer">
+    <div class="cart-drawer__top">
+      <h3 class="cart-drawer__title">Your cart</h3>
+      <button class="modal__close" id="cartCloseBtn" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-list" id="cartList"><!-- rendered by JS --></div>
+    <div class="cart-drawer__footer">
+      <button type="button" class="btn btn--primary btn--full" id="cartCheckoutBtn">Go to checkout</button>
     </div>
   </div>
 </div>
@@ -692,45 +768,45 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
   /* ============================================================
      PRODUCT DATA — hardcoded, no live inventory
      ============================================================ */
+  var LENGTH_OPTIONS_IN = [26,28,30,32,34,36,38,40];
+  function inToCm(inches){ return Math.round(inches * 2.54); }
+
   var PRODUCTS = [
     {
       id: "formal",
       cut: "Pencil skirt",
       name: "Meridian Pencil Skirt",
-      desc: "A clean pencil silhouette cut for the boardroom and beyond. Structured through the waist, with a modest mid-calf fall that moves easily through a full day.",
-      swatchGradient: "linear-gradient(135deg, #2C2A2E, #46454A)",
+      desc: "A clean pencil silhouette cut for the boardroom and beyond. Structured through the waist, for an easy line that moves with you through a full day.",
       letter: "M",
       colours: [
         { name: "Black", hex: "#1C1B1D", img: "images/pencil-black.jpg" },
         { name: "Charcoal grey", hex: "#4B4B4E", img: "images/pencil-charcoal.jpg" }
       ],
-      lengths: ["Mid-calf"]
+      lengths: LENGTH_OPTIONS_IN
     },
     {
       id: "casual",
-      cut: "Tiered midi",
+      cut: "Tiered skirt",
       name: "Sunday Tiered Skirt",
       desc: "Soft tiers that catch the breeze without asking for attention. An easy, everyday skirt built for long walks, lazy Sundays, and everything between.",
-      swatchGradient: "linear-gradient(135deg, #C79A78, #D3A6AE)",
       letter: "S",
       colours: [
         { name: "Beige", hex: "#D8C7AE", img: "images/tiered-beige.jpg" },
         { name: "Dusty pink", hex: "#D3A6AE", img: "images/tiered-pink.jpg" }
       ],
-      lengths: ["Mid-calf", "Ankle"]
+      lengths: LENGTH_OPTIONS_IN
     },
     {
       id: "occasion",
-      cut: "Bias-cut floral maxi",
-      name: "Bloom Bias Maxi",
-      desc: "A bias-cut floral maxi that skims rather than clings. Made for the moments that call for a little more drama, cut with quiet modesty in mind.",
-      swatchGradient: "linear-gradient(135deg, #EDE6DA, #2B2730)",
+      cut: "Bias-cut floral skirt",
+      name: "Bloom Bias Skirt",
+      desc: "A bias-cut floral skirt that skims rather than clings. Made for the moments that call for a little more drama, cut with quiet modesty in mind.",
       letter: "B",
       colours: [
         { name: "Ivory-black floral", hex: "#EDE6DA", accent:"#1C1B1D", img: "images/maxi-ivory-floral.jpg" },
         { name: "Black-cream floral", hex: "#2B2730", accent:"#EFE7DC", img: "images/maxi-black-floral.jpg" }
       ],
-      lengths: ["Ankle"]
+      lengths: LENGTH_OPTIONS_IN
     }
   ];
 
@@ -741,12 +817,19 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
     { label: "XL", inches: "33–35 in", cm: "84–89 cm" }
   ];
 
-  // Approximate body proportions used for the try-on guide.
-  // These are generic averages for a visual guide only — not a fitted measurement.
-  var BODY_PROPORTION = {
-    waistFromFloor: 0.53,
-    hemFromFloor: { "Mid-calf": 0.20, "Ankle": 0.06 }
-  };
+  var SHIRT_COLOURS = [
+    { name: "White",  hex: "#FFFFFF" },
+    { name: "Black",  hex: "#1C1B1D" },
+    { name: "Grey",   hex: "#8B8B8E" },
+    { name: "Red",    hex: "#B33B3B" },
+    { name: "Blue",   hex: "#3B5B8C" },
+    { name: "Yellow", hex: "#D9B54A" },
+    { name: "Green",  hex: "#4B7A5A" }
+  ];
+
+  // Generic body proportions used only to place the waist line on the mannequin —
+  // a guide, not a fitted measurement. See disclaimer shown in the UI.
+  var WAIST_FROM_FLOOR = 0.53;
 
   var $ = function(sel, ctx){ return (ctx||document).querySelector(sel); };
   var $$ = function(sel, ctx){ return Array.prototype.slice.call((ctx||document).querySelectorAll(sel)); };
@@ -791,7 +874,7 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
       '<div class="card__swatch">' +
         (heroImg
           ? '<img src="'+heroImg+'" alt="'+p.name+' in '+p.colours[0].name+'">'
-          : '<div style="width:100%;height:100%;background:'+p.swatchGradient+'"></div>') +
+          : '<div style="width:100%;height:100%;background:var(--ivory)"></div>') +
         '<span class="card__letter">'+p.letter+'</span>' +
         '<span class="card__placeholder-tag">'+p.colours[0].name+'</span>' +
       '</div>' +
@@ -817,93 +900,114 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
     tile.className = "ig-tile reveal";
     tile.style.background = (i % 2 === 0) ? "var(--plum)" : "var(--ivory)";
     tile.style.color = (i % 2 === 0) ? "rgba(255,255,255,.8)" : "var(--plum)";
-    tile.innerHTML = igIcon.replace("currentColor","currentColor");
+    tile.innerHTML = igIcon;
     igGrid.appendChild(tile);
   }
 
   /* ============================================================
-     ORDER FORM — populate design / colour / size / length selects
+     CART STATE
      ============================================================ */
-  var designSelect = $("#fld-design");
-  PRODUCTS.forEach(function(p){
-    var o = document.createElement("option");
-    o.value = p.id; o.textContent = p.name;
-    designSelect.appendChild(o);
-  });
+  var cart = [];
 
-  function populateColourSelect(designId, selectedColourName){
-    var p = PRODUCTS.filter(function(x){ return x.id === designId; })[0];
-    var sel = $("#fld-colour");
-    sel.innerHTML = "";
-    p.colours.forEach(function(c){
-      var o = document.createElement("option");
-      o.value = c.name; o.textContent = c.name;
-      sel.appendChild(o);
-    });
-    if (selectedColourName) sel.value = selectedColourName;
+  function addToCart(item){
+    item.cartId = "c" + Date.now() + Math.random().toString(36).slice(2, 6);
+    cart.push(item);
+    renderCartCount();
+    renderCartDrawer();
+    renderCheckoutSummary();
+  }
+  function removeFromCart(cartId){
+    cart = cart.filter(function(i){ return i.cartId !== cartId; });
+    renderCartCount();
+    renderCartDrawer();
+    renderCheckoutSummary();
   }
 
-  function populateLengthSelect(designId, selectedLength){
-    var p = PRODUCTS.filter(function(x){ return x.id === designId; })[0];
-    var sel = $("#fld-length");
-    sel.innerHTML = "";
-    p.lengths.forEach(function(l){
-      var o = document.createElement("option");
-      o.value = l; o.textContent = l;
-      sel.appendChild(o);
-    });
-    if (selectedLength) sel.value = selectedLength;
+  function renderCartCount(){
+    var el = $("#cartCount");
+    el.textContent = cart.length;
+    el.classList.toggle("is-empty", cart.length === 0);
   }
 
-  var sizeSelect = $("#fld-size");
-  SIZES.forEach(function(s){
-    var o = document.createElement("option");
-    o.value = s.label;
-    o.textContent = s.label + " · " + s.inches + " / " + s.cm;
-    sizeSelect.appendChild(o);
-  });
+  function cartItemRowHTML(item, removeBtnClass){
+    return (
+      '<img src="'+item.colourImg+'" alt="'+item.designName+' in '+item.colourName+'">' +
+      '<div class="'+ (removeBtnClass === "cart-item__remove" ? "cart-item__info" : "checkout-item__info") + '">' +
+        '<div class="'+ (removeBtnClass === "cart-item__remove" ? "cart-item__name" : "checkout-item__name") + '">'+item.designName+'</div>' +
+        '<div class="'+ (removeBtnClass === "cart-item__remove" ? "cart-item__meta" : "checkout-item__meta") + '">'+item.colourName+' · Size '+item.sizeLabel+' · '+item.lengthIn+' in ('+item.lengthCm+' cm)</div>' +
+        '<button type="button" class="'+removeBtnClass+'" data-remove="'+item.cartId+'">Remove</button>' +
+      '</div>'
+    );
+  }
 
-  populateColourSelect(PRODUCTS[0].id);
-  populateLengthSelect(PRODUCTS[0].id);
-
-  designSelect.addEventListener("change", function(){
-    populateColourSelect(this.value);
-    populateLengthSelect(this.value);
-  });
-
-  // contact method changes label + placeholder on the value field
-  var contactMethodSelect = $("#fld-contact-method");
-  var contactValueInput = $("#fld-contact-value");
-  var contactValueLabel = $("#fld-contact-value-label");
-  contactMethodSelect.addEventListener("change", function(){
-    if (this.value === "Email"){
-      contactValueLabel.textContent = "Email address";
-      contactValueInput.placeholder = "you@example.com";
-      contactValueInput.type = "email";
-    } else {
-      contactValueLabel.textContent = this.value + " number";
-      contactValueInput.placeholder = "+92 3XX XXXXXXX";
-      contactValueInput.type = "tel";
+  function renderCartDrawer(){
+    var list = $("#cartList");
+    if (cart.length === 0){
+      list.innerHTML = '<div class="cart-empty">Your cart is empty.<br><a href="#designs" id="cartEmptyLink">Browse the designs →</a></div>';
+      $("#cartCheckoutBtn").setAttribute("disabled", "disabled");
+      return;
     }
+    $("#cartCheckoutBtn").removeAttribute("disabled");
+    list.innerHTML = cart.map(function(item){
+      return '<div class="cart-item">' + cartItemRowHTML(item, "cart-item__remove") + '</div>';
+    }).join("");
+  }
+
+  function renderCheckoutSummary(){
+    var wrap = $("#checkoutSummary");
+    if (cart.length === 0){
+      wrap.innerHTML = '<div class="checkout-empty">Your cart is empty — <a href="#designs">browse the designs</a> to add one before checking out.</div>';
+      $("#checkoutSubmitBtn").setAttribute("disabled", "disabled");
+      return;
+    }
+    $("#checkoutSubmitBtn").removeAttribute("disabled");
+    wrap.innerHTML =
+      '<p class="checkout-summary__title">Your bag (' + cart.length + ')</p>' +
+      cart.map(function(item){
+        return '<div class="checkout-item">' + cartItemRowHTML(item, "checkout-item__remove") + '</div>';
+      }).join("");
+  }
+
+  document.addEventListener("click", function(e){
+    var btn = e.target.closest("[data-remove]");
+    if (btn) removeFromCart(btn.getAttribute("data-remove"));
+  });
+
+  renderCartCount();
+  renderCartDrawer();
+  renderCheckoutSummary();
+
+  /* ============================================================
+     CART DRAWER open/close
+     ============================================================ */
+  var cartBackdrop = $("#cartBackdrop");
+  function openCart(){ cartBackdrop.classList.add("is-open"); document.body.style.overflow = "hidden"; }
+  function closeCart(){ cartBackdrop.classList.remove("is-open"); document.body.style.overflow = ""; }
+  $("#cartOpenBtn").addEventListener("click", openCart);
+  $("#cartCloseBtn").addEventListener("click", closeCart);
+  cartBackdrop.addEventListener("click", function(e){ if (e.target === cartBackdrop) closeCart(); });
+  $("#cartCheckoutBtn").addEventListener("click", function(){
+    if (cart.length === 0) return;
+    closeCart();
+    $("#order").scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
   /* ============================================================
      MODAL / CONFIGURATOR
      ============================================================ */
   var backdrop = $("#modalBackdrop");
-  var modalPanel = $("#modalPanel");
   var lastFocused = null;
-  var configState = { designId: null, colour: null, size: null, length: null };
+  var configState = { designId: null, colour: null, colourImg: null, size: null, length: null };
+  var shirtState = { colour: SHIRT_COLOURS[0] };
 
   function openConfigurator(designId){
     var p = PRODUCTS.filter(function(x){ return x.id === designId; })[0];
     if (!p) return;
-    configState = { designId: designId, colour: null, size: null, length: (p.lengths.length === 1 ? p.lengths[0] : null) };
+    configState = { designId: designId, colour: null, colourImg: null, size: null, length: null };
 
     $("#modalCut").textContent = p.cut;
     $("#modalTitle").textContent = p.name;
 
-    // photo preview — defaults to the first colourway, swaps on selection
     var modalPhoto = $("#modalPhoto");
     var modalPhotoWrap = $("#modalPhotoWrap");
     if (p.colours[0].img){
@@ -925,12 +1029,13 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
       btn.innerHTML = '<span class="dot" style="background:'+bg+'"></span><span>'+c.name+'</span>';
       btn.addEventListener("click", function(){
         configState.colour = c.name;
+        configState.colourImg = c.img;
+        configState.colourHex = c.hex;
+        configState.colourAccent = c.accent || null;
         $$(".opt-swatch", colourRow).forEach(function(b){ b.classList.remove("is-active"); });
         btn.classList.add("is-active");
-        if (c.img){
-          modalPhoto.src = c.img;
-          modalPhoto.alt = p.name + " in " + c.name;
-        }
+        if (c.img){ modalPhoto.src = c.img; modalPhoto.alt = p.name + " in " + c.name; }
+        renderMannequin();
       });
       colourRow.appendChild(btn);
     });
@@ -954,29 +1059,26 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
     // length row
     var lengthRow = $("#lengthRow");
     lengthRow.innerHTML = "";
-    if (p.lengths.length === 1){
-      var fixedChip = document.createElement("div");
-      fixedChip.className = "opt-chip is-fixed";
-      fixedChip.innerHTML = '<span class="label">'+p.lengths[0]+'</span><span class="measure">Only length for this design</span>';
-      lengthRow.appendChild(fixedChip);
-    } else {
-      p.lengths.forEach(function(l){
-        var btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "opt-chip";
-        btn.innerHTML = '<span class="label">'+l+'</span>';
-        btn.addEventListener("click", function(){
-          configState.length = l;
-          $$(".opt-chip", lengthRow).forEach(function(b){ b.classList.remove("is-active"); });
-          btn.classList.add("is-active");
-          if (tryonState.photoLoaded) renderTryOnOverlay();
-        });
-        lengthRow.appendChild(btn);
+    p.lengths.forEach(function(inches){
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "opt-chip";
+      btn.innerHTML = '<span class="label">'+inches+' in</span><span class="measure">'+inToCm(inches)+' cm</span>';
+      btn.addEventListener("click", function(){
+        configState.length = inches;
+        $$(".opt-chip", lengthRow).forEach(function(b){ b.classList.remove("is-active"); });
+        btn.classList.add("is-active");
+        renderMannequin();
       });
-    }
+      lengthRow.appendChild(btn);
+    });
 
-    resetTryOn();
     $("#modalError").classList.remove("is-visible");
+    $("#modalAdded").classList.remove("is-visible");
+    $("#modalSubmitBtn").style.display = "block";
+
+    renderMannequin();
+
     lastFocused = document.activeElement;
     backdrop.classList.add("is-open");
     document.body.style.overflow = "hidden";
@@ -989,7 +1091,6 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
     if (lastFocused) lastFocused.focus();
   }
 
-  $$('[data-open]').length; // no-op guard
   grid.addEventListener("click", function(e){
     var btn = e.target.closest("[data-open]");
     if (btn) openConfigurator(btn.getAttribute("data-open"));
@@ -998,11 +1099,13 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
   $("#modalCloseBtn").addEventListener("click", closeConfigurator);
   backdrop.addEventListener("click", function(e){ if (e.target === backdrop) closeConfigurator(); });
   document.addEventListener("keydown", function(e){
-    if (e.key === "Escape" && backdrop.classList.contains("is-open")) closeConfigurator();
+    if (e.key !== "Escape") return;
+    if (backdrop.classList.contains("is-open")) closeConfigurator();
+    if (cartBackdrop.classList.contains("is-open")) closeCart();
   });
 
   /* ============================================================
-     TRY IT ON
+     TRY IT ON — shirt colour row + toggle
      ============================================================ */
   var tryonToggle = $("#tryonToggle");
   var tryonPanel = $("#tryonPanel");
@@ -1011,104 +1114,140 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
     tryonToggle.setAttribute("aria-expanded", open ? "true" : "false");
   });
 
-  var tryonState = { photoLoaded: false };
-  var tryonFile = $("#tryonFile");
-  var tryonImg = $("#tryonImg");
-  var tryonPlaceholderIcon = $("#tryonPlaceholderIcon");
-  var tryonHeight = $("#tryonHeight");
-  var tryonUnit = $("#tryonUnit");
-
-  function resetTryOn(){
-    tryonState.photoLoaded = false;
-    tryonImg.style.display = "none";
-    tryonImg.src = "";
-    tryonPlaceholderIcon.style.display = "flex";
-    $("#tryonShade").style.display = "none";
-    $("#tryonWaistLine").style.display = "none";
-    $("#tryonHemLine").style.display = "none";
-    $("#tryonReadout").textContent = "";
-    tryonFile.value = "";
-    tryonHeight.value = "";
-    tryonPanel.classList.remove("is-open");
-    tryonToggle.setAttribute("aria-expanded", "false");
-  }
-
-  tryonFile.addEventListener("change", function(){
-    var file = this.files && this.files[0];
-    if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function(ev){
-      tryonImg.src = ev.target.result;
-      tryonImg.style.display = "block";
-      tryonPlaceholderIcon.style.display = "none";
-      tryonState.photoLoaded = true;
-      renderTryOnOverlay();
-
-      // -----------------------------------------------------------------
-      // TODO: swap in image-generation API call here.
-      // Claude's own API cannot generate or edit images, so a photorealistic
-      // "wearing it" render would need a separate external image-generation
-      // service (e.g. a virtual try-on / diffusion inpainting API). That
-      // service would take this uploaded photo plus a reference image of
-      // the selected garment + colourway, and return a composite image to
-      // display in place of the plain overlay lines built below.
-      // -----------------------------------------------------------------
-    };
-    reader.readAsDataURL(file);
+  var shirtRow = $("#shirtRow");
+  SHIRT_COLOURS.forEach(function(sc){
+    var dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "shirt-dot" + (sc === SHIRT_COLOURS[0] ? " is-active" : "");
+    dot.style.background = sc.hex;
+    dot.title = sc.name;
+    dot.setAttribute("aria-label", sc.name + " shirt");
+    dot.addEventListener("click", function(){
+      shirtState.colour = sc;
+      $$(".shirt-dot", shirtRow).forEach(function(b){ b.classList.remove("is-active"); });
+      dot.classList.add("is-active");
+      renderMannequin();
+    });
+    shirtRow.appendChild(dot);
   });
 
-  tryonHeight.addEventListener("input", renderTryOnOverlay);
-  tryonUnit.addEventListener("change", renderTryOnOverlay);
+  var tryonHeight = $("#tryonHeight");
+  var tryonUnit = $("#tryonUnit");
+  tryonHeight.addEventListener("input", renderMannequin);
+  tryonUnit.addEventListener("change", renderMannequin);
 
-  function renderTryOnOverlay(){
+  /* ============================================================
+     MANNEQUIN — proportional height + shirt colour + skirt overlay
+     ============================================================ */
+  var FRAME_W = 200, FRAME_H = 420;
+  var TOP_MARGIN = 30, FLOOR_Y = 400;      // usable vertical drawing band
+  var MAX_CM = 200;                         // ruler scale ceiling
+  var PX_PER_CM = (FLOOR_Y - TOP_MARGIN) / MAX_CM;
+
+  function renderMannequin(){
     var heightVal = parseFloat(tryonHeight.value);
-    var waistLine = $("#tryonWaistLine");
-    var hemLine = $("#tryonHemLine");
-    var shade = $("#tryonShade");
-    var readout = $("#tryonReadout");
+    var usingDefault = !heightVal || heightVal <= 0;
+    var heightCm = usingDefault ? 165 : (tryonUnit.value === "in" ? heightVal * 2.54 : heightVal);
+    heightCm = Math.max(120, Math.min(200, heightCm));
 
-    if (!tryonState.photoLoaded || !heightVal || heightVal <= 0){
-      waistLine.style.display = "none";
-      hemLine.style.display = "none";
-      shade.style.display = "none";
-      readout.textContent = tryonState.photoLoaded ? "Add your height to see the guide." : "";
-      return;
+    var hint = $("#mannequinHint");
+    hint.textContent = usingDefault
+      ? "Showing an average height (165 cm) — enter yours above for an accurate guide."
+      : "";
+
+    var Hpx = heightCm * PX_PER_CM;
+    var floorY = FLOOR_Y;
+    var headTopY = floorY - Hpx;
+    var shoulderY = floorY - Hpx * 0.82;
+    var waistY = floorY - Hpx * WAIST_FROM_FLOOR;
+    var hipY = floorY - Hpx * 0.47;
+    var kneeY = floorY - Hpx * 0.27;
+    var centerX = FRAME_W / 2;
+    var headR = Math.max(14, Hpx * 0.055);
+    var shoulderW = 46;
+    var hipW = 40;
+
+    // ruler ticks, fixed scale regardless of entered height
+    var ticks = "";
+    for (var cm = 0; cm <= MAX_CM; cm += 20){
+      var ty = floorY - cm * PX_PER_CM;
+      ticks += '<line x1="6" y1="'+ty+'" x2="14" y2="'+ty+'" stroke="var(--plum-soft)" stroke-width="1"/>';
+      ticks += '<text x="18" y="'+(ty+3)+'" font-size="8" fill="var(--ink-soft)" font-family="Work Sans, sans-serif">'+cm+'</text>';
+    }
+    ticks += '<line x1="6" y1="'+TOP_MARGIN+'" x2="6" y2="'+floorY+'" stroke="var(--plum-soft)" stroke-width="1"/>';
+
+    // shirt: shoulders down to just above waist
+    var shirtHex = shirtState.colour.hex;
+    var shirtPath =
+      '<path d="M '+(centerX-shoulderW/2)+' '+shoulderY+' '+
+      'L '+(centerX+shoulderW/2)+' '+shoulderY+' '+
+      'L '+(centerX+hipW/2)+' '+(waistY+8)+' '+
+      'L '+(centerX-hipW/2)+' '+(waistY+8)+' Z" ' +
+      'fill="'+shirtHex+'" stroke="var(--line)" stroke-width="1"/>';
+
+    // arms — simple lines from shoulders down past the waist
+    var arms =
+      '<line x1="'+(centerX-shoulderW/2)+'" y1="'+shoulderY+'" x2="'+(centerX-shoulderW/2-6)+'" y2="'+(waistY+30)+'" stroke="'+shirtHex+'" stroke-width="9" stroke-linecap="round"/>' +
+      '<line x1="'+(centerX+shoulderW/2)+'" y1="'+shoulderY+'" x2="'+(centerX+shoulderW/2+6)+'" y2="'+(waistY+30)+'" stroke="'+shirtHex+'" stroke-width="9" stroke-linecap="round"/>';
+
+    // legs — two tapered shapes from hip to floor
+    var legs =
+      '<path d="M '+(centerX-hipW/2)+' '+hipY+' L '+(centerX-4)+' '+hipY+' L '+(centerX-6)+' '+floorY+' L '+(centerX-hipW/2+2)+' '+floorY+' Z" fill="var(--plum-wash)" stroke="var(--line)" stroke-width="1"/>' +
+      '<path d="M '+(centerX+hipW/2)+' '+hipY+' L '+(centerX+4)+' '+hipY+' L '+(centerX+6)+' '+floorY+' L '+(centerX+hipW/2-2)+' '+floorY+' Z" fill="var(--plum-wash)" stroke="var(--line)" stroke-width="1"/>';
+
+    // head + neck
+    var head =
+      '<circle cx="'+centerX+'" cy="'+(headTopY+headR)+'" r="'+headR+'" fill="var(--plum-wash)" stroke="var(--line)" stroke-width="1"/>' +
+      '<rect x="'+(centerX-6)+'" y="'+(headTopY+headR*2-2)+'" width="12" height="14" fill="var(--plum-wash)" stroke="var(--line)" stroke-width="1"/>';
+
+    // skirt overlay — only once colour + length are chosen
+    var skirt = "";
+    var readout = "";
+    if (configState.colour && configState.length){
+      var lengthCm = inToCm(configState.length);
+      var hemY = waistY + lengthCm * PX_PER_CM;
+      var clamped = false;
+      if (hemY > floorY){ hemY = floorY; clamped = true; }
+      var hemWidth = hipW + 26;
+
+      var fillDef = "";
+      var fillRef = configState.colourHex;
+      if (configState.colourAccent){
+        var gid = "skirtGrad";
+        fillDef = '<defs><linearGradient id="'+gid+'" x1="0" y1="0" x2="1" y2="1">' +
+          '<stop offset="0%" stop-color="'+configState.colourHex+'"/>' +
+          '<stop offset="50%" stop-color="'+configState.colourHex+'"/>' +
+          '<stop offset="50%" stop-color="'+configState.colourAccent+'"/>' +
+          '<stop offset="100%" stop-color="'+configState.colourAccent+'"/>' +
+        '</linearGradient></defs>';
+        fillRef = "url(#"+gid+")";
+      }
+
+      skirt = fillDef +
+        '<path d="M '+(centerX-hipW/2-4)+' '+waistY+' L '+(centerX+hipW/2+4)+' '+waistY+' ' +
+        'L '+(centerX+hemWidth/2)+' '+hemY+' L '+(centerX-hemWidth/2)+' '+hemY+' Z" ' +
+        'fill="'+fillRef+'" opacity="0.92" stroke="var(--plum-deep)" stroke-width="1"/>' +
+        '<line x1="'+(centerX-hemWidth/2-6)+'" y1="'+hemY+'" x2="'+(centerX+hemWidth/2+6)+'" y2="'+hemY+'" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="3 3"/>';
+
+      readout = "This "+configState.length+" in ("+lengthCm+" cm) length lands about <strong>"+configState.length+" in</strong> down from the waist" +
+        (clamped ? " — at this height, it reaches the floor." : ".");
+    } else {
+      readout = "Choose a colour and length above to see it on the mannequin.";
     }
 
-    var length = configState.length;
-    if (!length){
-      readout.textContent = "Choose a length above to see the guide.";
-      waistLine.style.display = "none";
-      hemLine.style.display = "none";
-      shade.style.display = "none";
-      return;
-    }
+    var svg =
+      '<svg viewBox="0 0 '+FRAME_W+' '+FRAME_H+'" width="200" height="'+ (FRAME_H*0.95) +'" xmlns="http://www.w3.org/2000/svg">' +
+        '<line x1="0" y1="'+floorY+'" x2="'+FRAME_W+'" y2="'+floorY+'" stroke="var(--plum-soft)" stroke-width="1.5"/>' +
+        ticks +
+        legs + skirt + shirtPath + arms + head +
+      '</svg>';
 
-    var heightCm = tryonUnit.value === "in" ? heightVal * 2.54 : heightVal;
-    var waistFraction = BODY_PROPORTION.waistFromFloor;
-    var hemFraction = BODY_PROPORTION.hemFromFloor[length];
-
-    // fraction from the TOP of the frame (assumes photo spans head-to-feet)
-    var waistTopPct = (1 - waistFraction) * 100;
-    var hemTopPct = (1 - hemFraction) * 100;
-
-    waistLine.style.top = waistTopPct + "%";
-    hemLine.style.top = hemTopPct + "%";
-    shade.style.top = waistTopPct + "%";
-    shade.style.height = (hemTopPct - waistTopPct) + "%";
-
-    waistLine.style.display = "block";
-    hemLine.style.display = "block";
-    shade.style.display = "block";
-
-    var dropCm = (waistFraction - hemFraction) * heightCm;
-    var dropIn = dropCm / 2.54;
-    readout.innerHTML = "At " + (tryonUnit.value === "in" ? heightVal + " in" : heightVal + " cm") +
-      ", this hem falls roughly <strong>" + dropCm.toFixed(0) + " cm (" + dropIn.toFixed(1) + " in)</strong> below your natural waist.";
+    $("#mannequinSvgHolder").innerHTML = svg;
+    $("#mannequinReadout").innerHTML = readout;
   }
 
   /* ============================================================
-     MODAL SUBMIT → carries config into order form
+     MODAL SUBMIT → add to cart
      ============================================================ */
   $("#modalSubmitBtn").addEventListener("click", function(){
     if (!configState.colour || !configState.size || !configState.length){
@@ -1117,23 +1256,45 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
     }
     $("#modalError").classList.remove("is-visible");
 
-    designSelect.value = configState.designId;
-    populateColourSelect(configState.designId, configState.colour);
-    populateLengthSelect(configState.designId, configState.length);
-    sizeSelect.value = configState.size;
+    var p = PRODUCTS.filter(function(x){ return x.id === configState.designId; })[0];
+    addToCart({
+      designId: p.id,
+      designName: p.name,
+      colourName: configState.colour,
+      colourImg: configState.colourImg,
+      sizeLabel: configState.size,
+      lengthIn: configState.length,
+      lengthCm: inToCm(configState.length)
+    });
 
+    $("#modalSubmitBtn").style.display = "none";
+    $("#modalAdded").classList.add("is-visible");
+  });
+
+  $("#keepBrowsingBtn").addEventListener("click", closeConfigurator);
+  $("#viewCartBtn").addEventListener("click", function(){
     closeConfigurator();
-
-    var orderSection = $("#order");
-    orderSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    var panel = $(".order__panel");
-    panel.style.boxShadow = "0 0 0 3px var(--gold), 0 24px 60px -34px rgba(53,20,43,.4)";
-    setTimeout(function(){ panel.style.boxShadow = "0 24px 60px -34px rgba(53,20,43,.4)"; }, 1600);
+    openCart();
   });
 
   /* ============================================================
-     ORDER FORM — validation + confirmation state
+     CHECKOUT FORM — validation + confirmation state
      ============================================================ */
+  var contactMethodSelect = $("#fld-contact-method");
+  var contactValueInput = $("#fld-contact-value");
+  var contactValueLabel = $("#fld-contact-value-label");
+  contactMethodSelect.addEventListener("change", function(){
+    if (this.value === "Email"){
+      contactValueLabel.textContent = "Email address";
+      contactValueInput.placeholder = "you@example.com";
+      contactValueInput.type = "email";
+    } else {
+      contactValueLabel.textContent = this.value + " number";
+      contactValueInput.placeholder = "03XX XXXXXXX";
+      contactValueInput.type = "tel";
+    }
+  });
+
   var orderForm = $("#orderForm");
   var orderConfirm = $("#orderConfirm");
 
@@ -1144,6 +1305,8 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
   orderForm.addEventListener("submit", function(e){
     e.preventDefault();
     var valid = true;
+
+    if (cart.length === 0){ return; }
 
     var nameField = $("#fld-name");
     if (!nameField.value.trim()){ setFieldError(nameField, true); valid = false; }
@@ -1159,15 +1322,17 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
 
     orderForm.style.display = "none";
     orderConfirm.classList.add("is-visible");
+    cart = [];
+    renderCartCount();
+    renderCartDrawer();
   });
 
   $("#resetFormBtn").addEventListener("click", function(){
     orderForm.reset();
-    populateColourSelect(PRODUCTS[0].id);
-    populateLengthSelect(PRODUCTS[0].id);
     orderForm.style.display = "block";
     orderConfirm.classList.remove("is-visible");
     $$(".form-field").forEach(function(f){ f.classList.remove("has-error"); });
+    renderCheckoutSummary();
   });
 
   /* ============================================================
@@ -1182,10 +1347,7 @@ textarea{resize:vertical;min-height:90px;font-family:inherit;}
     });
   }, { threshold: 0.15 });
 
-  function observeReveals(){
-    $$(".reveal").forEach(function(el){ io.observe(el); });
-  }
-  observeReveals();
+  $$(".reveal").forEach(function(el){ io.observe(el); });
 
 })();
 </script>
